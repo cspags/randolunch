@@ -1,0 +1,10 @@
+<%= javascript_tag do %>
+	window.restaurants = <%= raw @restaurant_list %>
+	window.winner = <%= raw @winner %>
+<% end %>
+
+<h1 id="restaurantName"></h1>
+
+<%= debug @winner %>
+
+<%= debug @temp_response %>

@@ -1,6 +1,29 @@
-<h1>Hello World!</h1>
-<div>
-	<pre id="result">
-		<%= @yelp_response %>
-	</pre>
+<div class="container">
+	<div class="hero-unit">
+		<h1>Randolunch</h1>
+		<p>Tired of the same old lunch spots?</p>
+		<p>Let us pick the place for you!</p>
+		<p>&nbsp;</p>
+
+		<%= form_for @search, html: { class: "form-horizontal"} do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
+			<div class="control-group">
+				<%= f.label :location, class: "control-label" %>
+				<div class="controls">
+					<%= f.text_field :location %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= f.label :search_term, class: "control-label" %>
+				<div class="controls">
+					<%= f.text_field :search_term %>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">  
+					<%= f.submit "Go!", class: "btn btn-primary btn-large" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
 </div>
