@@ -3,8 +3,38 @@
 	window.winner = <%= raw @winner %>
 <% end %>
 
-<h1 id="restaurantName"></h1>
-
-<%= debug @winner %>
-
-<%= debug @temp_response %>
+<div class="container">
+  <div class="well">
+    <h2>
+      And the winner is...
+    </h2>
+    <div class="row-fluid">
+      <div class="span7">
+        <h3 id="restaurantName" class="margin0"></h3>
+        <div id="restaurantDetails" class="hidden">
+        	<div class="row-fluid">
+	        	<div class="span6">
+		        	<p><img id="rating" /><span id="reviews"></span></p>
+		        	<p><a id="url" target="_blank">More info</a></p>
+		        	<p><span id="phone"></span></p>
+	        	</div>
+	        	<div id="address" class="span6"></div>
+        	</div>
+        	<div class="row-fluid">
+	        	<div class="span12 pickAgainContainer">
+	        		<%= form_for @search do |f| %>
+	        			<%= f.hidden_field :location %>
+	        			<%= f.hidden_field :search_term %>
+	        			<%= f.submit "Pick Again!", class: "btn btn-primary" %>
+	        			or <a href="/">start over</a>
+	        		<% end %>
+	        	</div>
+        	</div>
+    	</div>
+      </div>
+      <div class="span5">
+        Map goes here
+      </div>
+    </div>
+  </div>
+</div>

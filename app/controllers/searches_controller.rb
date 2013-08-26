@@ -24,16 +24,27 @@ class SearchesController < ApplicationController
 			@restaurant_list = @temp_response["businesses"].map { |item| item["name"] }.shuffle
 
 			#select a random item
+			rest_sample = @restaurant_list.sample
 			selected_item = @temp_response["businesses"]
-				.select { |item| item["name"] == @restaurant_list.sample }.first
+				.select { |item| item["name"] == rest_sample }.first
 
 			unless selected_item.nil?
 				@winner = {
 					name: selected_item["name"],
 					rating_img_url: selected_item["rating_img_url"],
-					rating: selected_item["rating"],
-					url: selected_item["url"]
+					rating_text: selected_item["rating"],
+					url: selected_item["url"],
+					phone: selected_item["display_phone"],
+					review_count: selected_item["review_count"],
+					address: selected_item["location"]["display_address"]
 				}.to_json
+			end
+
+			if @winner.nil?
+				logger.debug "******************************************************"
+				logger.debug "winner is nil"
+				logger.debug "sample: #{rest_sample}"
+				logger.debug "******************************************************"
 			end
 
 			@restaurant_list = @restaurant_list.to_json

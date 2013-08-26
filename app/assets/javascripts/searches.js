@@ -5,14 +5,13 @@ $(function() {
 })
 
 var changeName = function(index, loopCount) {
-	$("#restaurantName").text(window.restaurants[index]);
+	$("#restaurantName").text(restaurants[index]);
 
-	if(loopCount == 1 && window.restaurants[index] == window.winner.name) {
-		//show winner details
-
+	if(loopCount == 1 && restaurants[index] == winner.name) {
+		displayWinnerDetails();
 		return;
 	}
-	if(index < window.restaurants.length) {
+	if(index < restaurants.length) {
 		index++;
 		setTimeout(function() { changeName(index, loopCount); }, 100);
 	}
@@ -24,3 +23,20 @@ var changeName = function(index, loopCount) {
 	}
 
 };
+
+var displayWinnerDetails = function() {
+	$("#rating", "#restaurantDetails").attr("src", winner.rating_img_url)
+		.attr("alt", winner.rating_text + " star rating")
+		.attr("title", winner.rating_text + " star rating");
+	$("#phone", "#restaurantDetails").text(winner.phone);
+	$("#reviews", "#restaurantDetails").text(winner.review_count + " reviews");
+	$("#url", "#restaurantDetails").attr("href", winner.url);
+
+	var address = "";
+	$.each(winner.address, function(index, value) {
+		address += value + "<br />";
+	})
+	$("#address", "#restaurantDetails").html(address);	
+
+	$("#restaurantDetails").fadeIn("slow");
+}

@@ -3,3 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap";
+
+.hidden {
+	display: none;
+}
+
+.margin0 {
+	margin: 0;
+}
+
+.pickAgainContainer {
+	margin-top: 2em;
+}
+
+#reviews {
+	margin-left: 5px;
+}
+
+p {
+	margin-bottom: 5px;
+}
