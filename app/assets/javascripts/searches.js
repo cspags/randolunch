@@ -9,6 +9,8 @@ var changeName = function(index, loopCount) {
 
 	if(loopCount == 1 && restaurants[index] == winner.name) {
 		displayWinnerDetails();
+		Maps.initialize(winner.address[0]);
+		Maps.display();
 		return;
 	}
 	if(index < restaurants.length) {

@@ -3,6 +3,8 @@
 <head>
   <title>Randolunch</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!-- TODO: Only add key in production -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyA5XkMLsFdKPPgBsZ1zjjFeg-T4WRRm6Fs"></script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
