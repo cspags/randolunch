@@ -1,20 +1,20 @@
 var Maps = (function() {
-	var pub = {};
+	var _public = {};
 
 	var geocoder;
 	var map;
 	var infowindow;
 	var marker;
 
-	pub.initialize = function(address) {
+	_public.initialize = function(address) {
 		infowindow = new google.maps.InfoWindow();
 		geocoder = new google.maps.Geocoder();
 		getLatLng(address);
 	}
 
-	pub.display = function(latlng) {
+	_public.display = function(latlng) {
 		var mapOptions = {
-			zoom: 15,
+			zoom: 16,
 			center: latlng,
 			mapTypeId: 'roadmap'
 		}
@@ -29,7 +29,7 @@ var Maps = (function() {
 	var getLatLng = function(address) {
 		geocoder.geocode( { 'address': address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				pub.display(results[0].geometry.location);
+				_public.display(results[0].geometry.location);
 			} 
 			else {
 			 	alert('Geocode was not successful for the following reason: ' + status);
@@ -37,7 +37,7 @@ var Maps = (function() {
 		});
 	}
 
-	return pub;
+	return _public;
 })();
 
 
