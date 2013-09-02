@@ -14,7 +14,7 @@ var Maps = (function() {
 
 	_public.display = function(latlng) {
 		var mapOptions = {
-			zoom: 16,
+			zoom: 15,
 			center: latlng,
 			mapTypeId: 'roadmap'
 		}
@@ -32,7 +32,7 @@ var Maps = (function() {
 				_public.display(results[0].geometry.location);
 			} 
 			else {
-			 	alert('Geocode was not successful for the following reason: ' + status);
+			 	//alert('Geocode was not successful for the following reason: ' + status);
 			}
 		});
 	}

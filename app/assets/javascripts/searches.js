@@ -7,21 +7,21 @@ $(function() {
 var changeName = function(index, loopCount) {
 	$("#restaurantName").text(restaurants[index]);
 
-	if(loopCount == 1 && restaurants[index] == winner.name) {
+	if(loopCount == 3 && restaurants[index] == winner.name) {
 		displayWinnerDetails();
 		Maps.initialize(winner.address_for_geocode);
-		Maps.display();
+		//Maps.display();
 		return;
 	}
 	if(index < restaurants.length) {
 		index++;
-		setTimeout(function() { changeName(index, loopCount); }, 100);
+		setTimeout(function() { changeName(index, loopCount); }, 75);
 	}
 	else {
 		//here we've completed one cycle
 		loopCount++;
 		index = 0;
-		setTimeout(function() { changeName(index, loopCount); }, 100);
+		setTimeout(function() { changeName(index, loopCount); }, 75);
 	}
 
 };

@@ -1,7 +1,11 @@
 Randolunch::Application.routes.draw do
-  resources :searches, only: [:new, :create]
+  
 
   root to: "searches#new"
+  get "/search", to: "searches#new", as: "searches"
+  post "/search", to: "searches#create"
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

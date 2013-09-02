@@ -7,6 +7,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyA5XkMLsFdKPPgBsZ1zjjFeg-T4WRRm6Fs"></script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -20,7 +21,48 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="navbar navbar-inverse navbar-static-top" style="margin-bottom:20px">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span10 offset1">
+            <%= link_to "Randolunch", root_path, class: "brand" %>
+            <ul class="nav pull-right">
+              <li><a href="#">About</a></li>
+            </ul>
+          </div>
+         </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span10 offset1 well">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span10 offset1">
+            <ul class="nav">
+              <li><p class="navbar-text">&copy; <%= Date.today.year %> Chris Spagnuolo</p></li>
+            </ul>
+            <ul class="nav pull-right">
+              <li>
+                <p class="navbar-text">
+                  <img src="http://s3-media1.ak.yelpcdn.com/assets/2/www/img/dc8ff90d5d7d/developers/Powered_By_Yelp_Black.png">
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

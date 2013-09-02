@@ -2,12 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass', '~> 2.3.2.1'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'faker', '1.0.1'
-gem 'will_paginate', '3.0.3'
-gem 'bootstrap-will_paginate', '0.0.6'
+#gem 'bcrypt-ruby', '3.0.1'
+#gem 'faker', '1.0.1'
+#gem 'will_paginate', '3.0.3'
+#gem 'bootstrap-will_paginate', '0.0.6'
 gem "yelpster", "~> 1.1.4"
 gem "figaro", "~> 0.7.0"
+gem "custom_error_message", "~> 1.1.1"
+#gem "sitemap_generator", "~> 4.2.0"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
