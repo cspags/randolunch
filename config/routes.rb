@@ -5,6 +5,7 @@ Randolunch::Application.routes.draw do
   get "/search", to: "searches#new", as: "searches"
   post "/search", to: "searches#create"
 
+  match "/about", to: "static_pages#about", as: "about"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
