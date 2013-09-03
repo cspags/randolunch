@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
 	include Yelp::V2::Search::Request
 
 	DEFAULT_REQUEST_SIZE = 20
+	DEFAULT_REQUEST_DISTANCE = 1609.34
 
 	def new
 		@search = Search.new
@@ -17,6 +18,7 @@ class SearchesController < ApplicationController
 			search_request = get_location_search_request(
 				@search.search_term.blank? ? "" : @search.search_term, 
 				@search.location,
+				get_distance_in_meters(@search.distance, @search.distance_unit),
 				limit: 1
 			)
 
@@ -51,6 +53,7 @@ class SearchesController < ApplicationController
 			search_request = get_location_search_request(
 				@search.search_term.blank? ? "" : @search.search_term, 
 				@search.location,
+				get_distance_in_meters(@search.distance, @search.distance_unit),
 				offset: offset
 			)
 
@@ -86,8 +89,6 @@ class SearchesController < ApplicationController
 
 				@restaurant_list = @restaurant_list.to_json
 			else
-				# Add message
-				# "Oh no! We couldn't find a restaurant for you.  Try broadening your search criteria."
 				logger.debug "******************************************************"
 				logger.debug "Error occurred - 85"
 				logger.debug "#{@temp_response}"
@@ -102,7 +103,7 @@ class SearchesController < ApplicationController
 
 	private
 
-	def get_location_search_request(term, address, options = {})
+	def get_location_search_request(term, address, radius_filter, options = {})
 		default_options = { limit: DEFAULT_REQUEST_SIZE, offset: 0 }
 		options = default_options.merge(options)
 
@@ -112,6 +113,7 @@ class SearchesController < ApplicationController
 			category_filter: "restaurants",
 			limit: options[:limit],
 			offset: options[:offset],
+			radius_filter: radius_filter,
 			consumer_key: ENV["RANDOLUNCH_YELP_CONSUMER_KEY"],
 			consumer_secret: ENV["RANDOLUNCH_YELP_CONSUMER_SECRET"],
 			token: ENV["RANDOLUNCH_YELP_TOKEN"],
@@ -121,5 +123,26 @@ class SearchesController < ApplicationController
 	def get_address_for_geocode(item)
 		address = item["location"]["address"].join(" ")
 		address += " " + item["location"]["city"]
+	end
+
+	def get_distance_in_meters(distance, unit)
+		distance_in_meters = DEFAULT_REQUEST_DISTANCE
+		if unit == "miles"
+			distance_in_meters = distance.to_f * 1609.34
+		elsif unit == "kilometers"
+			distance_in_meters = distance.to_f * 1000.0
+		end
+
+		# Yelp max distance = 40,000 meters - should never happen but just in case
+		if distance_in_meters > 40000.0
+			distance_in_meters = 40000.0
+		end
+
+		# Also should never happen
+		if distance_in_meters <= 0.0
+			distance_in_meters = DEFAULT_REQUEST_DISTANCE
+		end
+
+		return distance_in_meters	
 	end
 end

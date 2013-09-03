@@ -2,6 +2,10 @@ $(function() {
 	if($("#restaurantName").length > 0) {
 		changeName(0, 0);
 	}
+
+	if($(".distance-unit").length > 0) {
+		$(".distance-unit").change(onDistanceUnitChange);
+	}
 })
 
 var changeName = function(index, loopCount) {
@@ -41,4 +45,30 @@ var displayWinnerDetails = function() {
 	$("#address", "#restaurantDetails").html(address);	
 
 	$("#restaurantDetails").fadeIn("slow");
+}
+
+var milesOptions = ["0.5", "1", "2", "5", "10", "20"];
+var metersOptions = ["1", "2", "5", "10", "15", "30"];
+
+var onDistanceUnitChange = function() {
+	// get whether miles or meters was selected
+	var distanceUnit = $(".distance-unit option:selected").text();
+	var options = milesOptions;
+	var defaultOption = "1";
+	if (distanceUnit == "kilometers") {
+		options = metersOptions;
+		defaultOption = "2";
+	}
+
+	var distance = $(".distance");
+	distance.empty(); // remove old options
+
+	$.each(options, function(index, value) {
+		var newOption = $("<option></option>").attr("value", value).text(value);
+		if(value == defaultOption) {
+			newOption.attr("selected", "selected")
+		}
+
+		distance.append(newOption);
+	});
 }

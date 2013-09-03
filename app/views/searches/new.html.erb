@@ -16,6 +16,15 @@
 					class: "span5" %>
 			</div>
 			<div class="row-fluid">
+			<div class="span5">
+				<%= f.label :distance %>
+				<%= f.select :distance, 
+					options_for_select([ "0.5", "1", "2", "5", "10", "20" ], "1"), {}, class: "distance" %> 
+				<%= f.select :distance_unit, 
+					options_for_select([ "miles", "kilometers" ], "miles"), {}, class: "distance-unit" %> 
+			</div>
+			</div>
+			<div class="row-fluid">
 				<%= f.label :search_term %>
 				<%= f.text_field :search_term, placeholder: "pizza, tacos, etc.", class: "span5" %>
 			</div>

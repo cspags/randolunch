@@ -3,9 +3,11 @@ class Search
 	include ActiveModel::Conversion
 	extend ActiveModel::Naming
 
-	attr_accessor :search_term, :location
+	attr_accessor :search_term, :location, :distance, :distance_unit
 
 	validates :location, presence: true
+	validates :distance, presence: true
+	validates :distance_unit, presence: true
 
 	def initialize(attributes = {})
 		attributes.each do |name, value|

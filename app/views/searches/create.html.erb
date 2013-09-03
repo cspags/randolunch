@@ -23,6 +23,8 @@
       		<%= form_for @search do |f| %>
       			<%= f.hidden_field :location %>
       			<%= f.hidden_field :search_term %>
+            <%= f.hidden_field :distance %>
+            <%= f.hidden_field :distance_unit %>
       			<%= f.submit "Pick Again!", class: "btn btn-primary" %>
       			or <%= link_to "start over", root_path %>
       		<% end %>
