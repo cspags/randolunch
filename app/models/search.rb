@@ -5,7 +5,7 @@ class Search
 
 	attr_accessor :search_term, :location, :distance, :distance_unit
 
-	validates :location, presence: true
+	validates :location, presence: { message: "^Please provide your location." }
 	validates :distance, presence: true
 	validates :distance_unit, presence: true
 
