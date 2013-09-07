@@ -10,6 +10,7 @@ gem "yelpster", "~> 1.1.4"
 gem "figaro", "~> 0.7.0"
 gem "custom_error_message", "~> 1.1.1"
 #gem "sitemap_generator", "~> 4.2.0"
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
