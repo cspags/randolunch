@@ -2,15 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap";
-@import "bootstrap-responsive";
-
 .margin0 {
 	margin: 0;
 }
 
 .pickAgainContainer {
 	margin-top: 2em;
+	margin-bottom: 20px;
 }
 
 #reviews {
@@ -18,7 +16,12 @@
 }
 
 #map_canvas {
-	height:400px;
+	height: 400px;
+}
+
+#restaurantName {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 p {
@@ -27,29 +30,63 @@ p {
 
 .main-subtext {
 	font-size: 1.5em;
-	margin-bottom: 0.5em;
+	margin-bottom: 1.25em;
+
+	p {
+		margin-bottom: 0px;
+	}
 }
 
+// TODO: Is there a more compact way to do this??
+@media (max-width: $screen-xs) {
+  .main-subtext {
+		font-size: 1em;
+	}
+}
 
+@media (max-width: $screen-sm) {
+	.main-subtext {
+		font-size: 1.25em;
+	}    
+}
 
 .navbar {
 	border-radius: 0;
 }
 
-.navbar-inner, .hero-unit, .well {
+.hero-unit, .well {
 	border-radius: 0;
 }
 
 
 .header-title {
 	font-size: 54px;
-	padding: 10px 0 10px 0;
+	padding: 0;
+	margin-top: 5px;
+}
+
+@media (max-width: $screen-xs) {
+  .header-title {
+		font-size: 1em;
+	}
+}
+
+@media (max-width: $screen-sm) {
+	.header-title {
+		font-size: 2.75em;
+	}    
 }
 
 .distance {
-	width: 60px;
+	width: 80px;
+	display: inline-block;
 }
 
 .distance-unit {
 	width: 110px;
+	display: inline-block;
+}
+
+.distance-label {
+	display: block;
 }
