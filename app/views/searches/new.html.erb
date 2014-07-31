@@ -1,35 +1,43 @@
 <h1 class="header-title">Randolunch</h1>
-<div class="row-fluid">
-    <div class="span12">
-		<p class="main-subtext">Tired of the same old restaurants?</p>
-		<p class="main-subtext">Let us pick the place for you!</p>
+<div class="row">
+    <div class="col-md-12">
+    <div class="main-subtext">
+			<p class="">Tired of the same old restaurants?</p>
+			<p class="">Let us pick the place for you!</p>
+		</div>
 
 		<%= form_for @search do |f| %>
-			<div class="row-fluid">
-				<div class="span5">
+			<div class="row">
+				<div class="col-sm-7">
 					<%= render 'shared/error_messages', object: f.object %>
 				</div>
 			</div>
-			<div class="row-fluid">
-				<%= f.label :location, "Your Location" %>
-				<%= f.text_field :location, placeholder: "address, neighborhood, city, state or zip code",
-					class: "span5" %>
+			<div class="row">
+				<div class="form-group col-sm-7">
+					<%= f.label :location, "Your Location" %>
+					<%= f.text_field :location, placeholder: "address, neighborhood, city, state or zip code",
+						class: "form-control" %>
+				</div>
 			</div>
-			<div class="row-fluid">
-			<div class="span5">
-				<%= f.label :distance %>
-				<%= f.select :distance, 
-					options_for_select([ "0.5", "1", "2", "5", "10", "20" ], "1"), {}, class: "distance" %> 
-				<%= f.select :distance_unit, 
-					options_for_select([ "miles", "kilometers" ], "miles"), {}, class: "distance-unit" %> 
+			<div class="row">
+				<div class="form-group col-sm-7">
+					<%= f.label :distance, class: "distance-label" %>
+					<%= f.select :distance, 
+						options_for_select([ "0.5", "1", "2", "5", "10", "20" ], "1"), {}, class: "form-control distance" %> 
+					<%= f.select :distance_unit, 
+						options_for_select([ "miles", "kilometers" ], "miles"), {}, class: "form-control distance-unit" %> 
+				</div>
 			</div>
+			<div class="row">
+				<div class="form-group col-sm-7">
+					<%= f.label :search_term, "Search Term (optional)", style: "display:block" %>
+					<%= f.text_field :search_term, placeholder: "french, sushi, etc.", class: "form-control" %>
+				</div>
 			</div>
-			<div class="row-fluid">
-				<%= f.label :search_term, "Search Term (optional)" %>
-				<%= f.text_field :search_term, placeholder: "french, sushi, etc.", class: "span5" %>
-			</div>
-			<div class="row-fluid">
-				<%= f.submit "Find Restaurant!", class: "btn btn-primary btn-large" %>
+			<div class="row">
+				<div class="col-sm-7">
+					<%= f.submit "Find Restaurant!", class: "btn btn-primary btn-lg" %>
+				</div>
 			</div>
 		<% end %>
 	</div>

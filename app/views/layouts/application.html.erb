@@ -26,38 +26,43 @@
 </head>
 <body>
 
-  <div class="navbar navbar-inverse navbar-static-top" style="margin-bottom:20px">
-    <div class="navbar-inner">
-      <div class="container">
-        <div class="row-fluid">
-          <div class="span10 offset1">
-            <%= link_to "Randolunch", root_path, class: "brand" %>
-            <ul class="nav pull-right">
-              <li><%= link_to "About", about_path %></li>
-            </ul>
+  <div id="wrap">
+    <div id="main">
+      <header class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 col-md-offset-1">
+                <ul class="nav navbar-nav navbar-header">
+                  <li><%= link_to "Randolunch", root_path, class: "navbar-brand" %></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to "About", about_path %></li>
+                </ul>
+              </div>
+             </div>
           </div>
-         </div>
-      </div>
-    </div>
-  </div>
+      </header>
 
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span10 offset1 well">
-        <%= yield %>
-      </div>
-    </div>
-  </div>
-
-  <div class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="navbar-inner">
       <div class="container">
-        <div class="row-fluid">
-          <div class="span10 offset1">
-            <ul class="nav">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="well">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="navbar navbar-inverse margin0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <ul class="nav navbar-nav">
               <li><p class="navbar-text">&copy; <%= Date.today.year %> Chris Spagnuolo</p></li>
             </ul>
-            <ul class="nav pull-right">
+            <ul class="nav navbar-nav navbar-right">
               <li>
                 <p class="navbar-text">
                   <a target="_blank" href="http://www.yelp.com/"><img src="http://s3-media1.ak.yelpcdn.com/assets/2/www/img/dc8ff90d5d7d/developers/Powered_By_Yelp_Black.png"></a>
@@ -68,6 +73,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 </body>
 </html>

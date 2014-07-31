@@ -1,0 +1,72 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+
+ // NOTE: rather than doing the normal rails asset piple line require tree thing
+ //		    manually importing the sass files below, this allows them to use boostrap variables
+ 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "searches";
+@import "static_pages";
+
+/* -- BOOTSTRAP SOURCE CHANGES -- */
+
+/*************************************
+Made $grid-float-breakpoint 0 in _variables.scss 
+so that the navbar would not be responsive
+
+*************************************/
+/* -- END BOOSTRAP SOURCE CHANGES -- */
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight:bold;
+}
+
+.navbar-right {
+	float: right !important; // Fixes right nav items moving left on small screens
+}
+
+
+/* -- Sticky Footer -- */
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:57px; /* this needs to be bigger than footer height*/
+}
+
+footer {
+  position: relative;
+  margin-top: -57px; /* negative value of footer height */
+  height: 57px;
+  clear:both;
+  
+} 
+/* -- End Sticky Footer -- */
+
+
+@media (max-width: $screen-xs) {
+    
+}
+
+@media (max-width: $screen-sm) {
+    
+}
